@@ -3,6 +3,7 @@ package com.leebaba.android.blockedittextdemo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 
 import com.leebaba.android.blockedittext.BlockEdittext;
 import com.leebaba.android.blockedittext.OnInputListener;
@@ -23,5 +24,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG, "OnInput: " +text);
             }
         });
+        edittext.setBlockMargin(20);
+        edittext.setBlockSize(200);
+        edittext.setTextSize(TypedValue.COMPLEX_UNIT_PX,100);
     }
+
 }

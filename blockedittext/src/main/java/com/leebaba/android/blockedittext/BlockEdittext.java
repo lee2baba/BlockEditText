@@ -10,7 +10,6 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -64,6 +63,51 @@ public class BlockEdittext extends LinearLayout {
         blockInit(context, defStyleAttr);
     }
 
+    public void setBlockSize(float blockSize) {
+        this.blockSize = blockSize;
+        for (int i = 0; i < editTextList.size(); i++) {
+            EditText editText = editTextList.get(i);
+            LinearLayout.LayoutParams layoutParams = (LayoutParams) editText.getLayoutParams();
+            layoutParams.width = (int) blockSize;
+            layoutParams.height = (int) blockSize;
+            editText.setLayoutParams(layoutParams);
+        }
+        requestLayout();
+    }
+
+
+    public void setTextSize(float textSize) {
+        this.textSize = textSize;
+        for (int i = 0; i < editTextList.size(); i++) {
+            EditText editText = editTextList.get(i);
+            editText.setTextSize(textSize);
+        }
+        requestLayout();
+    }
+
+    public void setTextSize(int unit,float textSize) {
+        this.textSize = textSize;
+        for (int i = 0; i < editTextList.size(); i++) {
+            EditText editText = editTextList.get(i);
+            editText.setTextSize(unit,textSize);
+        }
+        requestLayout();
+    }
+
+
+    public void setBlockMargin(float blockMargin) {
+        this.blockMargin = blockMargin;
+        for (int i = 0; i < editTextList.size(); i++) {
+            if(i != 0){
+                EditText editText = editTextList.get(i);
+                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) editText.getLayoutParams();
+                layoutParams.setMargins((int) blockSize,0,0,0);
+                editText.setLayoutParams(layoutParams);
+            }
+
+        }
+        requestLayout();
+    }
 
     private void init(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         //默认水平
@@ -83,6 +127,7 @@ public class BlockEdittext extends LinearLayout {
         blockMargin = typedArray.getDimension(R.styleable.BlockEdittext_blockMargin, 40);
 
     }
+
 
 
     private void blockInit(Context context, int defStyleAttr) {
@@ -134,7 +179,6 @@ public class BlockEdittext extends LinearLayout {
                     int index = getIndex(id);
 
                     if (s == null || TextUtils.isEmpty(s)) {
-                        Log.i(TAG, "onTextChanged  delete");
                         //减少
 //                        stringBuffer.deleteCharAt(stringBuffer.length() - 1);
                         int length = stringBuffer.length();
@@ -144,7 +188,6 @@ public class BlockEdittext extends LinearLayout {
                         }
                     } else {
                         //添加
-                        Log.i(TAG, "onTextChanged  add");
                         /*stringBuffer.append(s);
                         int length = stringBuffer.length();*/
                         if (index < edittextNum-1) {
@@ -182,7 +225,6 @@ public class BlockEdittext extends LinearLayout {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int width = (int) (blockSize * edittextNum + blockMargin * (edittextNum - 1));
         int heigh = (int) blockSize;
-
         setMeasuredDimension(width, heigh);
     }
 

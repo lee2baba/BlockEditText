@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/BlockEditText.iml" filepath="$PROJECT_DIR$/.idea/BlockEditText.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BlockEditText.iml" filepath="$PROJECT_DIR$/BlockEditText.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/blockedittext/blockedittext.iml" filepath="$PROJECT_DIR$/blockedittext/blockedittext.iml" />
     </modules>
