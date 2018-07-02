@@ -101,7 +101,7 @@ public class BlockEdittext extends LinearLayout {
             if(i != 0){
                 EditText editText = editTextList.get(i);
                 LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) editText.getLayoutParams();
-                layoutParams.setMargins((int) blockSize,0,0,0);
+                layoutParams.setMargins((int) blockMargin,0,0,0);
                 editText.setLayoutParams(layoutParams);
             }
 
